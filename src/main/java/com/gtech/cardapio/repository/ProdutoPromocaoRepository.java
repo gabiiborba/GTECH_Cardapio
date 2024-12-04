@@ -10,9 +10,9 @@ import java.util.List;
 
 @Repository
 public interface ProdutoPromocaoRepository extends JpaRepository<ProdutoPromocao, Long> {
-    @Query("SELECT pp.produtos FROM ProdutoPromocao pp " +
+    @Query("SELECT pp FROM ProdutoPromocao pp " +
+            "JOIN pp.produto p " +
             "WHERE CURRENT_DATE BETWEEN pp.dataInicio AND pp.dataFim " +
-            "AND pp.excluido = false " +
-            "AND pp.ativo = true ")
-    List<Produtos> findProdutosEmPromocao();
+            "AND pp.precoPromocional > 0")
+    List<ProdutoPromocao> findProdutosEmPromocao();
 }

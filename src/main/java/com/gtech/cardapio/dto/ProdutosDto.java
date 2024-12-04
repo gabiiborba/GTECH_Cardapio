@@ -3,24 +3,28 @@ package com.gtech.cardapio.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 public class ProdutosDto {
-    // Campos relacionados à produtos
+    private Long id;
     private String name;
     private String description;
-    private double price;
-    private int promocao;
-    private byte[] imagem;
+    private BigDecimal price;
+    private String imagem;
+    private List<ProdutoPromocaoDto> promocoes;
 
-    // Campos relacionados à grupo
-    private String descricao;
-
-    // Campos relacionados à promoção
-    private boolean emPromocao;  // Indica se o produto está em promoção
-    private double precoPromocional;  // Preço promocional, caso esteja em promoção
-    private String descricaoPromocao;  // Descrição da promoção
-    private String dataInicioPromocao;  // Data de início da promoção (formatada como String ou LocalDate)
-    private String dataFimPromocao;  // Data de fim da promoção (formatada como String ou LocalDate)
-
+    public ProdutosDto(Long id, String name, String description, BigDecimal price, String imagem, List<ProdutoPromocaoDto> promocoes) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imagem = imagem;
+        /*this.promocoes = produtos.getPromocoes().stream()
+                .map(ProdutoPromocaoDto::new)  // Converte cada ProdutoPromocao para ProdutoPromocaoDTO
+                .collect(Collectors.toList());*/
+    }
 }

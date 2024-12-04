@@ -1,12 +1,16 @@
 package com.gtech.cardapio.repository;
 
 import com.gtech.cardapio.model.Produtos;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface ProdutosRepository extends JpaRepository<Produtos, Long> {
 
-    List<Produtos> findAll();
     List<Produtos> findByGrupoId(Long grupoId);
+    Page<Produtos> findAll(Pageable pageable);
 }
