@@ -25,7 +25,6 @@ public class ProdutosService {
 
     public Page<Produtos> listarProdutosPaginados(Pageable pageable){
         return produtosRepository.findAll(pageable);
-    }
+     }
 }
-
 
