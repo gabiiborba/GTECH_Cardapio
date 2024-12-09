@@ -23,4 +23,3 @@ public class Grupo {
     @JsonManagedReference
     private List<Produtos> produtos;
 }
-
